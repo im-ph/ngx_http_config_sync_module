@@ -9,6 +9,7 @@
 #include "cjson/cJSON.h"
 #include <dirent.h>
 #include <sys/stat.h>
+#include <string.h>
 
 /* Generate version ID: v{timestamp}_{hash_prefix} */
 ngx_int_t
@@ -73,7 +74,7 @@ ngx_config_sync_write_version_metadata(ngx_pool_t *pool,
     site_config = config_set->site_configs->elts;
     for (i = 0; i < config_set->site_configs->nelts; i++) {
         u_char *filename = site_config[i].path.data;
-        u_char *slash = (u_char *)ngx_strrchr(filename, '/');
+        u_char *slash = (u_char *)strrchr((char *)filename, '/');
         if (slash != NULL) {
             filename = slash + 1;
         }
@@ -211,7 +212,7 @@ ngx_config_sync_create_version(ngx_pool_t *pool,
     site_config = config_set->site_configs->elts;
     for (i = 0; i < config_set->site_configs->nelts; i++) {
         /* Extract filename */
-        slash = (u_char *)ngx_strrchr(site_config[i].path.data, '/');
+        slash = (u_char *)strrchr((char *)site_config[i].path.data, '/');
         if (slash != NULL) {
             filename.data = slash + 1;
             filename.len = site_config[i].path.len - (slash + 1 - site_config[i].path.data);
