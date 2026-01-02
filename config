@@ -1,46 +1,16 @@
 ngx_addon_name=ngx_http_config_sync_module
 
-if test -n "$ngx_module_link"; then
+if [ -n "$ngx_module_link" ]; then
     ngx_module_type=HTTP
     ngx_module_name=ngx_http_config_sync_module
-    ngx_module_srcs="$ngx_addon_dir/src/ngx_http_config_sync_module.c \
-                     $ngx_addon_dir/src/ngx_http_config_sync_config.c \
-                     $ngx_addon_dir/src/ngx_http_config_sync_handler.c \
-                     $ngx_addon_dir/src/ngx_http_config_sync_auth.c \
-                     $ngx_addon_dir/src/ngx_http_config_sync_version.c \
-                     $ngx_addon_dir/src/ngx_http_config_sync_sync.c \
-                     $ngx_addon_dir/src/ngx_http_config_sync_utils.c \
-                     $ngx_addon_dir/src/cjson/cJSON.c"
-    ngx_module_deps="$ngx_addon_dir/src/ngx_http_config_sync_module.h \
-                     $ngx_addon_dir/src/ngx_http_config_sync_config.h \
-                     $ngx_addon_dir/src/ngx_http_config_sync_handler.h \
-                     $ngx_addon_dir/src/ngx_http_config_sync_auth.h \
-                     $ngx_addon_dir/src/ngx_http_config_sync_version.h \
-                     $ngx_addon_dir/src/ngx_http_config_sync_sync.h \
-                     $ngx_addon_dir/src/ngx_http_config_sync_utils.h \
-                     $ngx_addon_dir/src/cjson/cJSON.h"
+    ngx_module_srcs="$ngx_addon_dir/src/ngx_http_config_sync_module.c $ngx_addon_dir/src/ngx_http_config_sync_config.c $ngx_addon_dir/src/ngx_http_config_sync_handler.c $ngx_addon_dir/src/ngx_http_config_sync_auth.c $ngx_addon_dir/src/ngx_http_config_sync_version.c $ngx_addon_dir/src/ngx_http_config_sync_sync.c $ngx_addon_dir/src/ngx_http_config_sync_utils.c $ngx_addon_dir/src/cjson/cJSON.c"
+    ngx_module_deps="$ngx_addon_dir/src/ngx_http_config_sync_module.h $ngx_addon_dir/src/ngx_http_config_sync_config.h $ngx_addon_dir/src/ngx_http_config_sync_handler.h $ngx_addon_dir/src/ngx_http_config_sync_auth.h $ngx_addon_dir/src/ngx_http_config_sync_version.h $ngx_addon_dir/src/ngx_http_config_sync_sync.h $ngx_addon_dir/src/ngx_http_config_sync_utils.h $ngx_addon_dir/src/cjson/cJSON.h"
     ngx_module_libs="-lcrypto"
 
     . auto/module
 else
     HTTP_MODULES="$HTTP_MODULES ngx_http_config_sync_module"
-    NGX_ADDON_SRCS="$NGX_ADDON_SRCS \
-                    $ngx_addon_dir/src/ngx_http_config_sync_module.c \
-                    $ngx_addon_dir/src/ngx_http_config_sync_config.c \
-                    $ngx_addon_dir/src/ngx_http_config_sync_handler.c \
-                    $ngx_addon_dir/src/ngx_http_config_sync_auth.c \
-                    $ngx_addon_dir/src/ngx_http_config_sync_version.c \
-                    $ngx_addon_dir/src/ngx_http_config_sync_sync.c \
-                    $ngx_addon_dir/src/ngx_http_config_sync_utils.c \
-                    $ngx_addon_dir/src/cjson/cJSON.c"
-    NGX_ADDON_DEPS="$NGX_ADDON_DEPS \
-                    $ngx_addon_dir/src/ngx_http_config_sync_module.h \
-                    $ngx_addon_dir/src/ngx_http_config_sync_config.h \
-                    $ngx_addon_dir/src/ngx_http_config_sync_handler.h \
-                    $ngx_addon_dir/src/ngx_http_config_sync_auth.h \
-                    $ngx_addon_dir/src/ngx_http_config_sync_version.h \
-                    $ngx_addon_dir/src/ngx_http_config_sync_sync.h \
-                    $ngx_addon_dir/src/ngx_http_config_sync_utils.h \
-                    $ngx_addon_dir/src/cjson/cJSON.h"
+    NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/src/ngx_http_config_sync_module.c $ngx_addon_dir/src/ngx_http_config_sync_config.c $ngx_addon_dir/src/ngx_http_config_sync_handler.c $ngx_addon_dir/src/ngx_http_config_sync_auth.c $ngx_addon_dir/src/ngx_http_config_sync_version.c $ngx_addon_dir/src/ngx_http_config_sync_sync.c $ngx_addon_dir/src/ngx_http_config_sync_utils.c $ngx_addon_dir/src/cjson/cJSON.c"
+    NGX_ADDON_DEPS="$NGX_ADDON_DEPS $ngx_addon_dir/src/ngx_http_config_sync_module.h $ngx_addon_dir/src/ngx_http_config_sync_config.h $ngx_addon_dir/src/ngx_http_config_sync_handler.h $ngx_addon_dir/src/ngx_http_config_sync_auth.h $ngx_addon_dir/src/ngx_http_config_sync_version.h $ngx_addon_dir/src/ngx_http_config_sync_sync.h $ngx_addon_dir/src/ngx_http_config_sync_utils.h $ngx_addon_dir/src/cjson/cJSON.h"
     CORE_LIBS="$CORE_LIBS -lcrypto"
 fi
