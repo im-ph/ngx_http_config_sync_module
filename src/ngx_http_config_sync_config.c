@@ -8,6 +8,7 @@
 #include <openssl/sha.h>
 #include <dirent.h>
 #include <sys/stat.h>
+#include <string.h>
 
 /* Read single file from disk */
 ngx_int_t
@@ -324,7 +325,7 @@ ngx_config_sync_write_config_set(ngx_pool_t *pool,
     for (i = 0; i < config_set->site_configs->nelts; i++) {
         /* Extract filename from path */
         u_char *filename = site_config[i].path.data;
-        u_char *slash = (u_char *) ngx_strrchr(filename, '/');
+        u_char *slash = (u_char *) strrchr((char *)filename, '/');
         if (slash != NULL) {
             filename = slash + 1;
         }
